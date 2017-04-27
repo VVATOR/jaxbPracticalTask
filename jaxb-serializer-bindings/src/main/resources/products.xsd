@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="https://www.epam.com/products" xmlns:tns="https://www.epam.com/products">
+
+	<xs:simpleType name="ProductType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="convenience" />
+			<xs:enumeration value="shopping" />
+			<xs:enumeration value="speciality" />
+			<xs:enumeration value="unsought" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Product">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="price" type="xs:integer" />
+			<xs:element name="amount" type="xs:integer" />
+			<xs:element name="description" type="xs:string" />
+			<xs:element name="type" type="tns:ProductType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="products">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="product" minOccurs="1" maxOccurs="unbounded"
+					type="tns:Product" />
+
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
+

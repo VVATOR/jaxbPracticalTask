@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>jaxb-serializer-bindings</artifactId>
+	<name>jaxb-serializer-bindings</name>
+	<description>jaxb-serializer-bindings</description>
+	<packaging>jar</packaging>
+
+	<parent>
+		<groupId>com.epam.training</groupId>
+		<artifactId>PracticalTaskJAXB</artifactId>
+		<version>1.0</version>
+	</parent>
+
+
+
+	<properties>
+		<jaxb2-maven-plugin.version>2.2</jaxb2-maven-plugin.version>
+	</properties>
+
+	<build>
+		<sourceDirectory>target/generated</sourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>${jaxb2-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>xjc</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<outputDirectory>target/generated/</outputDirectory>					
+					<sources>
+						<source>src/main/resources/products.xsd</source>
+					</sources>
+				</configuration>
+			</plugin>
+			
+		</plugins>
+	</build>
+
+
+</project>
